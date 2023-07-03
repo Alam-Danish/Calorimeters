@@ -16,6 +16,7 @@
 #include "G4SystemOfUnits.hh"
 #include "G4PVParameterised.hh"
 #include "G4PVReplica.hh"
+#include "G4VisAttributes.hh"
 
 #include "parameter.hh"
 
@@ -30,6 +31,7 @@ public:
     virtual G4VPhysicalVolume* Construct(); // Construct method
 
 private:
+    std::vector<G4VisAttributes*> VisAttributes; // Vector of VisAttributes
     G4LogicalVolume *emCalCellLogical;
     G4LogicalVolume *hadCalScintLogical;
 };

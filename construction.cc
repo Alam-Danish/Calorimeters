@@ -77,5 +77,39 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     G4LogicalVolume *hadCalScintLogical = new G4LogicalVolume(hadCalScintSolid, scintillator, "hadCalScintLogical");
     new G4PVPlacement(0, G4ThreeVector(0., 0., 2.*cm), hadCalScintLogical, "hadCalScintPhysical", hadCalLayerLogical, false, 0, true);
 
+    
+    // visualization attributes of the volumes
+    // world volume
+    G4VisAttributes *visAttributes = new G4VisAttributes(G4Colour(1.0,1.0,1.0)); // White
+    visAttributes->SetVisibility(false); // Set the visibility of the world volume to false
+    worldLogical->SetVisAttributes(visAttributes); // Set the visualization attributes of the world volume
+    VisAttributes.push_back(visAttributes); // Add the visualization attributes to the vector
+    
+    // EM calorimeter
+    visAttributes = new G4VisAttributes(G4Colour(0.8888,0.8888,0.0)); // Yellow
+    visAttributes->SetVisibility(true);
+    emCalLogical->SetVisAttributes(visAttributes);
+    VisAttributes.push_back(visAttributes);
+    
+    // EM calorimeter cell which is visible
+    visAttributes = new G4VisAttributes(G4Colour(0.9,0.9,0.0)); // Yellow
+    visAttributes->SetVisibility(false); // Set the visibility false, if you want to see the EM calorimeter cell, set it to true
+    emCalCellLogical->SetVisAttributes(visAttributes);
+    VisAttributes.push_back(visAttributes);
+    
+    // Hadron calorimeter which is visible
+    visAttributes = new G4VisAttributes(G4Colour(0.0, 0.0, 0.9)); // Blue
+    hadCalLogical->SetVisAttributes(visAttributes);
+    VisAttributes.push_back(visAttributes);
+    
+    // Hadron calorimeter column, cell, layer and scintillator plate
+    visAttributes = new G4VisAttributes(G4Colour(0.0, 0.0, 0.9));
+    visAttributes->SetVisibility(false); // Set the visibility false, if you want to see the hadron calorimeter column, cell, layer and scintillator plate, set it to true
+    hadCalColumnLogical->SetVisAttributes(visAttributes);
+    hadCalCellLogical->SetVisAttributes(visAttributes);
+    hadCalLayerLogical->SetVisAttributes(visAttributes);
+    hadCalScintLogical->SetVisAttributes(visAttributes);
+    VisAttributes.push_back(visAttributes);
+
     return worldPhysical;
 }
