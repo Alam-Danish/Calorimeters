@@ -33,5 +33,14 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     G4LogicalVolume *emCalLogical = new G4LogicalVolume(emCalSolid, CsI, "emCalLogical");
     G4VPhysicalVolume *emCalPhysical = new G4PVPlacement(0, G4ThreeVector(0., 0., 2.*m), emCalLogical, "emCalPhysical", worldLogical, false, 0, true);
 
+    // Hadron Calorimeter volume material
+    G4Material *Pb = nist->FindOrBuildMaterial("G4_Pb"); // Lead
+    G4Material *scintillator = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE"); // Scintillator material
+
+    // Hadron Calorimeter volume
+    G4VSolid *hadCalSolid = new G4Box("hadCalSolid", 1.5*m, 30.*cm, 50.*cm);
+    G4LogicalVolume *hadCalLogical = new G4LogicalVolume(hadCalSolid, Pb, "hadCalLogical");
+    G4VPhysicalVolume *hadCalPhysical = new G4PVPlacement(0, G4ThreeVector(0., 0., 3.*m), hadCalLogical, "hadCalPhysical", worldLogical, false, 0, true);
+
     return worldPhysical;
 }
