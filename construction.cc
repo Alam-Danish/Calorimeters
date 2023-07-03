@@ -19,7 +19,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     
 
     // World volume
-    G4VSolid *worldSolid = new G4Box("worldSolid", 10.*m, 3.*m, 10.*m); // World volume with name ans its dimensions
+    G4VSolid *worldSolid = new G4Box("worldSolid", 2.*m, 1.*m, 6.*m); // World volume with name ans its dimensions
     // Logical volume of the world volume with Mother volume, material, name
     G4LogicalVolume *worldLogical = new G4LogicalVolume(worldSolid, air, "worldLogical");
     // Physical volume of the world volume with logical volume, rotation, position, logical volume, mother volume name, boolean operation, copy number, check overlapes

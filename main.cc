@@ -11,6 +11,7 @@
 #include "construction.hh"
 #include "FTFP_BERT.hh"
 #include "G4StepLimiterPhysics.hh"
+#include "action.hh"
 
 int main(int argc, char** argv)
 {
@@ -26,6 +27,9 @@ int main(int argc, char** argv)
     physicsList->RegisterPhysics(new G4StepLimiterPhysics());
     // Set and Initialize physics list
     runManager->SetUserInitialization(physicsList);
+
+    // Set and Initialize user defined action initialization class for runManager
+    runManager->SetUserInitialization(new MyActionInitialization());
 
     runManager->Initialize();
 
@@ -43,6 +47,10 @@ int main(int argc, char** argv)
     UImanager->ApplyCommand("/vis/open OGL");
     UImanager->ApplyCommand("/vis/viewer/set/viewpointVector 1 1 1");
     UImanager->ApplyCommand("/vis/drawVolume");
+    UImanager->ApplyCommand("/vis/scene/add/trajectories smooth");
+    UImanager->ApplyCommand("/vis/scene/add/hits");
+    UImanager->ApplyCommand("/vis/scene/endOfEventAction accumulate");
+    
     
 
     ui->SessionStart();
