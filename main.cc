@@ -8,21 +8,41 @@
 #include "G4VisExecutive.hh"
 #include "G4VisManager.hh"
 
+#include "construction.hh"
+#include "FTFP_BERT.hh"
+#include "G4StepLimiterPhysics.hh"
 
 int main(int argc, char** argv)
 {
     // Creating default Run Manager
     G4RunManager *runManager = new G4RunManager(); 
 
+    // Set and Initialize user defined detector construction class for runManager
+    runManager->SetUserInitialization(new MyDetectorConstruction());
+
+    // Getting predefined Physics List from FTFP_BERT class
+    G4VModularPhysicsList *physicsList = new FTFP_BERT();
+    // Step limiter physics to limits the step size of traversing particles
+    physicsList->RegisterPhysics(new G4StepLimiterPhysics());
+    // Set and Initialize physics list
+    runManager->SetUserInitialization(physicsList);
+
+    runManager->Initialize();
+
     // Graphical user interface (GUI) for visualization and interactive control
     G4UIExecutive *ui = new G4UIExecutive(argc, argv);
 
-    // Visualisation
+    // Visualisation manager 
     G4VisManager *visManager = new G4VisExecutive();
     visManager->Initialize();
 
     // Pointer to manage user interface
     G4UImanager *UImanager = G4UImanager::GetUIpointer();
+
+    // Commands to user interface for interactive mode
+    UImanager->ApplyCommand("/vis/open OGL");
+    UImanager->ApplyCommand("/vis/viewer/set/viewpointVector 1 1 1");
+    UImanager->ApplyCommand("/vis/drawVolume");
     
 
     ui->SessionStart();
