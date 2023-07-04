@@ -49,7 +49,7 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 
     G4cout << "Particle: " << particle->GetParticleName() << G4endl;
     
-    G4ThreeVector pos(0., 0., 0.); // origin of the particle gun
+    G4ThreeVector pos(0., 0., -2.0*m); // origin of the particle gun
     G4ThreeVector mom(0., 0., 1.); // direction of the particle gun
 
     fParticleGun->SetParticlePosition(pos);

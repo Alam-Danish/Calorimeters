@@ -8,6 +8,10 @@ MyDetectorConstruction::MyDetectorConstruction()
 // Destructor
 MyDetectorConstruction::~MyDetectorConstruction()
 {
+  for (G4int i=0; i<G4int(VisAttributes.size()); ++i) 
+  {
+    delete VisAttributes[i];
+  }  
 }
 
 // Construct method
@@ -36,7 +40,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     // Here I divided the EM calorimeter into 80 cells in 20 columns and 4 rows
     // EM calorimeter Cell
     G4VSolid *emCalCellSolid = new G4Box("emCalCellSolid", 7.5*cm, 7.5*cm, 15.*cm);
-    G4LogicalVolume *emCalCellLogical = new G4LogicalVolume(emCalCellSolid, CsI, "emCalCellLogical");
+    emCalCellLogical = new G4LogicalVolume(emCalCellSolid, CsI, "emCalCellLogical");
     // Parameterisation of the EM calorimeter cell which is defined in parameter.hh
     G4VPVParameterisation *cellParam = new EMCellParameterisation();
     // Parameterised volume (Parameterised volume name, logical cell volume, logical mother volume, copy number, number of cells, parameterisation)
@@ -93,7 +97,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     
     // EM calorimeter cell which is visible
     visAttributes = new G4VisAttributes(G4Colour(0.9,0.9,0.0)); // Yellow
-    visAttributes->SetVisibility(false); // Set the visibility false, if you want to see the EM calorimeter cell, set it to true
+    visAttributes->SetVisibility(true); // Set the visibility false, if you want to see the EM calorimeter cell, set it to true
     emCalCellLogical->SetVisAttributes(visAttributes);
     VisAttributes.push_back(visAttributes);
     
