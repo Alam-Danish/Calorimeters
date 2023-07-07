@@ -17,8 +17,13 @@
 #include "G4PVParameterised.hh"
 #include "G4PVReplica.hh"
 #include "G4VisAttributes.hh"
+#include "G4Colour.hh"
+#include "G4ios.hh"
+#include "G4SDManager.hh"
+#include "G4VSensitiveDetector.hh"
 
 #include "parameter.hh"
+#include "emcalSD.hh"
 
 // Detector Construction class declaration
 class MyDetectorConstruction : public G4VUserDetectorConstruction
@@ -29,6 +34,7 @@ public:
     virtual ~MyDetectorConstruction(); // Destructor
 
     virtual G4VPhysicalVolume* Construct(); // Construct method
+    virtual void ConstructSDandField(); // Construct Sensitive Detector and Field method
 
 private:
     std::vector<G4VisAttributes*> VisAttributes; // Vector of VisAttributes

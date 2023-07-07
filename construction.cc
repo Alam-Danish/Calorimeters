@@ -117,3 +117,15 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
     return worldPhysical;
 }
+
+
+void MyDetectorConstruction::ConstructSDandField()
+{
+  G4SDManager *SDman = G4SDManager::GetSDMpointer(); // Get the pointer to the sensitive detector manager
+  G4String SDname;
+  
+  
+  G4VSensitiveDetector *emCalorimeter = new MyEmCalSD(SDname="/EmCalorimeter");
+  SDman->AddNewDetector(emCalorimeter);
+  emCalCellLogical->SetSensitiveDetector(emCalorimeter);
+}
