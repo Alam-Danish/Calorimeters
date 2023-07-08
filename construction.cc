@@ -78,7 +78,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     // hadron calorimeter scintillator plates
     // These are placed in the middle of the layers
     G4VSolid *hadCalScintSolid = new G4Box("hadCalScintBox", 15.*cm, 15.*cm, 0.5*cm);
-    G4LogicalVolume *hadCalScintLogical = new G4LogicalVolume(hadCalScintSolid, scintillator, "hadCalScintLogical");
+    hadCalScintLogical = new G4LogicalVolume(hadCalScintSolid, scintillator, "hadCalScintLogical");
     new G4PVPlacement(0, G4ThreeVector(0., 0., 2.*cm), hadCalScintLogical, "hadCalScintPhysical", hadCalLayerLogical, false, 0, true);
 
     
@@ -119,13 +119,19 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 }
 
 
+// Sesitive detector construction
 void MyDetectorConstruction::ConstructSDandField()
 {
   G4SDManager *SDman = G4SDManager::GetSDMpointer(); // Get the pointer to the sensitive detector manager
   G4String SDname;
   
-  
+  // EM calorimeter sensitive detector
   G4VSensitiveDetector *emCalorimeter = new MyEmCalSD(SDname="/EmCalorimeter");
   SDman->AddNewDetector(emCalorimeter);
   emCalCellLogical->SetSensitiveDetector(emCalorimeter);
+
+  // Hadron calorimeter sensitive detector
+  G4VSensitiveDetector* hadCalorimeter = new MyHadCalSD(SDname="/HadCalorimeter");
+  SDman->AddNewDetector(hadCalorimeter);
+  hadCalScintLogical->SetSensitiveDetector(hadCalorimeter);
 }

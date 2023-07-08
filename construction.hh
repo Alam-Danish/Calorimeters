@@ -24,6 +24,7 @@
 
 #include "parameter.hh"
 #include "emcalSD.hh"
+#include "hadcalSD.hh"
 
 // Detector Construction class declaration
 class MyDetectorConstruction : public G4VUserDetectorConstruction
