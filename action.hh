@@ -5,6 +5,7 @@
 
 #include "generator.hh"
 #include "runaction.hh"
+#include "eventaction.hh"
 
 /// Action initialization class.
 

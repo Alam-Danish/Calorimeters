@@ -11,4 +11,5 @@ void MyActionInitialization::Build() const
     // Generator, run action, and event action definition
     SetUserAction(new MyPrimaryGenerator);
     SetUserAction(new MyRunAction);
+    SetUserAction(new MyEventAction);
 }
