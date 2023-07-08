@@ -49,6 +49,8 @@ int main(int argc, char** argv)
     UImanager->ApplyCommand("/vis/drawVolume");
     UImanager->ApplyCommand("/vis/scene/add/trajectories smooth");
     UImanager->ApplyCommand("/vis/scene/add/hits");
+
+    // Comment this line for event by event visualization and also to save memory if running in batch mode
     UImanager->ApplyCommand("/vis/scene/endOfEventAction accumulate");
     
     

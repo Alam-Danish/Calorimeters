@@ -44,7 +44,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     // Parameterisation of the EM calorimeter cell which is defined in parameter.hh
     G4VPVParameterisation *cellParam = new EMCellParameterisation();
     // Parameterised volume (Parameterised volume name, logical cell volume, logical mother volume, copy number, number of cells, parameterisation)
-    new G4PVParameterised("emCalCellPhysical", emCalCellLogical, emCalLogical, kUndefined, 80, cellParam);
+    new G4PVParameterised("emCalCellPhysical", emCalCellLogical, emCalLogical, kXAxis, 80, cellParam);
 
 
     // Hadron Calorimeter volume material
@@ -97,7 +97,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     
     // EM calorimeter cell which is visible
     visAttributes = new G4VisAttributes(G4Colour(0.9,0.9,0.0)); // Yellow
-    visAttributes->SetVisibility(true); // Set the visibility false, if you want to see the EM calorimeter cell, set it to true
+    visAttributes->SetVisibility(true); // Set the visibility false, if you want to remove lines of the individual cells.
     emCalCellLogical->SetVisAttributes(visAttributes);
     VisAttributes.push_back(visAttributes);
     
@@ -108,7 +108,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     
     // Hadron calorimeter column, cell, layer and scintillator plate
     visAttributes = new G4VisAttributes(G4Colour(0.0, 0.0, 0.9));
-    visAttributes->SetVisibility(false); // Set the visibility false, if you want to see the hadron calorimeter column, cell, layer and scintillator plate, set it to true
+    visAttributes->SetVisibility(false); // Set the visibility true, if you want to see the hadron calorimeter column, cell, layer and scintillator plate.
     hadCalColumnLogical->SetVisAttributes(visAttributes);
     hadCalCellLogical->SetVisAttributes(visAttributes);
     hadCalLayerLogical->SetVisAttributes(visAttributes);

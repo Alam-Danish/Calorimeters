@@ -4,6 +4,7 @@
 #include "G4VUserActionInitialization.hh"
 
 #include "generator.hh"
+#include "runaction.hh"
 
 /// Action initialization class.
 
@@ -13,7 +14,6 @@ class MyActionInitialization : public G4VUserActionInitialization
     MyActionInitialization();
     virtual ~MyActionInitialization();
 
-    virtual void BuildForMaster() const;
     virtual void Build() const;
 
 };

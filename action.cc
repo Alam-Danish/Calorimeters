@@ -1,18 +1,14 @@
 #include "action.hh"
 
-#include "generator.hh"
 
 MyActionInitialization::MyActionInitialization()
 {}
 MyActionInitialization::~MyActionInitialization()
 {}
 
-void MyActionInitialization::BuildForMaster() const
-{
-}
-
 void MyActionInitialization::Build() const
-{
-    MyPrimaryGenerator *generator = new MyPrimaryGenerator();
-    SetUserAction(generator);
+{   
+    // Generator, run action, and event action definition
+    SetUserAction(new MyPrimaryGenerator);
+    SetUserAction(new MyRunAction);
 }
