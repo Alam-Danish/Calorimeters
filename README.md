@@ -34,7 +34,7 @@ HCAL Energy distribution where energy deposition is primarily due to pions.
 ### Getting started
 clone the repository
 ```bash
-https://github.com/Alam-Danish/Calorimeters.git
+git clone https://github.com/Alam-Danish/Calorimeters.git
 cd Calorimeters
 ```
 configure the build with CMake
