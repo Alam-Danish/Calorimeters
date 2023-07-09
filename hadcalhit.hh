@@ -1,4 +1,4 @@
-// Similar to ElecroMagnetic calorimeter hit,
+// Similar to Electromagnetic calorimeter hit,
 // we define a class to store the information of each hit in the hadronic calorimeter.
 
 #ifndef HAD_CALORIMETER_HIT_HH

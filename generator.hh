@@ -23,7 +23,7 @@ private:
     G4ParticleDefinition *electron;
     G4ParticleDefinition *Muon;
     G4ParticleDefinition *Pion;
-    G4bool fRandomizePrimary = true;
+    G4bool fRandomizePrimary = true; // Set  false if you want to generate only pions
 };
 
 #endif

@@ -1,3 +1,5 @@
+// Similar to Electromagnetic calorimeter sensitive detector.
+
 #ifndef HAD_CALORIMETER_SD_HH
 #define HAD_CALORIMETER_SD_HH
 

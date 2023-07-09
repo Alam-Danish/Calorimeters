@@ -1,8 +1,9 @@
 #include "parameter.hh"
 
-
+// EM Calorimeter cell parameterisation
 EMCellParameterisation::EMCellParameterisation()
 {
+    // Define the cell positions
     for (G4int copyNo=0;copyNo<80;copyNo++)
     {
         G4int column = copyNo / 4;
@@ -16,6 +17,7 @@ EMCellParameterisation::EMCellParameterisation()
 EMCellParameterisation::~EMCellParameterisation()
 {}
 
+// Geometry transformation to place cells
 void EMCellParameterisation::ComputeTransformation
 (const G4int copyNo,G4VPhysicalVolume *physVol) const
 {

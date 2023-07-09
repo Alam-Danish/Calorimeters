@@ -1,3 +1,5 @@
+// Similar to Electromagnetic calorimeter sensitive detector.
+
 #include "hadcalSD.hh"
 
 // Constructor

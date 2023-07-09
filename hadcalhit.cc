@@ -1,3 +1,5 @@
+// Similar to Electromagnetic calorimeter hit.
+
 #include "hadcalhit.hh"
  
 
