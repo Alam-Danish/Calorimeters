@@ -29,6 +29,27 @@ HCAL Energy distribution where energy deposition is primarily due to pions.
 
 ![HCAL Energy distribution](HCEnergy.png)
 
+
+
+### Getting started
+clone the repository
+```bash
+https://github.com/Alam-Danish/Calorimeters.git
+cd Calorimeters
+```
+configure the build with CMake
+```bash
+cd build
+cmake ..
+make
+```
+now, to run the simulation
+```bash
+./calo
+```
+
+
+
 ### Simulation code structure: 
 
 Several different files have been created for the simulation, which is explained in order of requirements:
